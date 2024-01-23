@@ -17,7 +17,7 @@
                 $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
             </button>';
-                $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                   <i class="fa fa-lg fa-fw fa-trash"></i>
               </button>';
                 $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
@@ -39,8 +39,13 @@
                         <td>{{ $cliente->nombre }}</td>
                         <td>{{ $cliente->apellido }}</td>
                         <td>{{ $cliente->telefono }}</td>
-                        <td>{!! $btnEdit !!} {!! $btnDelete !!}</td>
-
+                        <td>{!! $btnEdit !!}
+                            <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar">
+                                @csrf
+                                @method('delete')
+                                {!! $btnDelete !!}
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </x-adminlte-datatable>
@@ -57,7 +62,24 @@
 @stop
 
 @section('js')
-    <script>
-        console.log('Hi!');
+     <script>
+        $(document).ready(function() {
+            $('.formEliminar').submit(function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Estas Seguro???",
+                    text: "Se Eliminara el registro!!!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                            this.submit();
+                    }
+                });
+            })
+        })
     </script>
 @stop
