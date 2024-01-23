@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -30,7 +31,27 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
-        return "Listo para Grabar";
+        $valoracion = $request->validate([
+            'curp' => 'required|regex:/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9]{2}$/|unique:clients,curp|min:18|max:18',
+            'nombre' => 'required|string|max:75',
+            'apellido' => 'required|string|max:75',
+            'email' => 'required|email|unique:clients,email|max:75',
+            'telefono' => 'required|numeric|regex:/^\d{10}$/',
+        ]);
+
+        $cliente = new Client();
+
+        $cliente->curp = $request->input('curp');
+        $cliente->nombre = $request->input('nombre');
+        $cliente->apellido = $request->input('apellido');
+        $cliente->email = $request->input('email');
+        $cliente->telefono = $request->input('telefono');
+        $cliente->direccion = $request->input('direccion');
+        $cliente->estado = $request->input('estado');
+
+        $cliente->save();
+
+        return back()->with('message', "Informacion recibida 😉");
     }
 
     /**
