@@ -21,7 +21,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
-        return "Nuevo Cliente";
+        return view('sistema.addCliente');
     }
 
     /**
@@ -30,6 +30,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        return "Listo para Grabar";
     }
 
     /**
