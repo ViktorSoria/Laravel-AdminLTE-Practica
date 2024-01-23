@@ -69,6 +69,9 @@ class ClienteController extends Controller
     public function edit(string $id)
     {
         //
+        $cliente = Client::find($id);
+
+        return view('sistema.editCliente',compact('cliente'));
     }
 
     /**
@@ -77,6 +80,18 @@ class ClienteController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $cliente = Client::find($id);
+
+        $cliente->curp = $request->input('curp');
+        $cliente->nombre = $request->input('nombre');
+        $cliente->apellido = $request->input('apellido');
+        $cliente->email = $request->input('email');
+        $cliente->telefono = $request->input('telefono');
+        $cliente->direccion = $request->input('direccion');
+        $cliente->estado = $request->input('estado');
+
+        $cliente->save();
+        return back()->with('message','Datos Actualizados 👌');
     }
 
     /**

@@ -14,9 +14,7 @@
             @php
                 $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 40], ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
-                $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                <i class="fa fa-lg fa-fw fa-pen"></i>
-            </button>';
+                $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                   <i class="fa fa-lg fa-fw fa-trash"></i>
               </button>';
@@ -39,8 +37,13 @@
                         <td>{{ $cliente->nombre }}</td>
                         <td>{{ $cliente->apellido }}</td>
                         <td>{{ $cliente->telefono }}</td>
-                        <td>{!! $btnEdit !!}
-                            <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar">
+                        <td>
+                            <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
+                                class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                                <i class="fa fa-lg fa-fw fa-pen"></i>
+                            </a>
+                            <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
+                                style="display: inline">
                                 @csrf
                                 @method('delete')
                                 {!! $btnDelete !!}
@@ -62,7 +65,8 @@
 @stop
 
 @section('js')
-     <script>
+<script> console.log('Hi!'); </script>
+    <script>
         $(document).ready(function() {
             $('.formEliminar').submit(function(e) {
                 e.preventDefault();
@@ -73,10 +77,10 @@
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonText: "Si, Borrar!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                            this.submit();
+                        this.submit();
                     }
                 });
             })
