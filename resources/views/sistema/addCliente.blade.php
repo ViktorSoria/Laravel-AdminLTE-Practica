@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Administracion de Clientes</h1>
+    <h1>Nuevo Cliente</h1>
 @stop
 
 @section('content')
@@ -103,6 +103,9 @@
 
                 {{-- Themes + icons --}}
                 <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />
+                {{-- <a href="/client" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a> --}}
+                <a href="{{route('cliente.index')}}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
+
             </form>
         </div>
     </div>

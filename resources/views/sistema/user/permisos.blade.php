@@ -9,8 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <x-adminlte-button label="Nuevo" theme="primary" icon="fa fa-plus-circle" class="float-right" data-toggle="modal"
-                data-target="#modalPurple" />
+            <x-adminlte-button label="Nuevo" theme="primary" icon="fa fa-plus-circle" class="float-right" data-toggle="modal" data-target="#modalPurple" />
         </div>
         <div class="card-body">
             {{-- Setup data for datatables --}}

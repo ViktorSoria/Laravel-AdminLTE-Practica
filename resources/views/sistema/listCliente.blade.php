@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Administracion de Clientes</h1>
+    <h1>Lista de Clientes</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 40], ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 20], ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">

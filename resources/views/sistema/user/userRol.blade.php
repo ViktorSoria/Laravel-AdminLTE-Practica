@@ -12,7 +12,7 @@
             <p>{{$user->name}}</p>
         </div>
         <div class="card-body">
-            <h5>LISTA DE PERMISOS</h5>
+            <h5>LISTA DE ROLES</h5>
             {!! Form::model($user, ['route' => ['asignar.update', $user],'method'=>'put']) !!}
             @foreach ($roles as $role)
             <div>
@@ -22,8 +22,9 @@
                 </label>
             </div>
             @endforeach
-            {!! Form::submit("Asignar Rol", ['class'=>'btn btn-primary mt-3']) !!}
+            {!! Form::submit("Asignar Rol", ['class'=>'btn btn-primary mt-3 float-left']) !!}
             {!! Form::close() !!}
+            <a href="{{route('asignar.index')}}" class="btn btn-primary mt-3 float-right" icon="fas fa-save">Cancelar</a>
         </div>
     </div>
 @stop
