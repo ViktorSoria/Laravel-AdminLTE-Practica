@@ -3,15 +3,19 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Administracion de Clientes</h1>
+    <h1>Administracion de Permisos</h1>
 @stop
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <x-adminlte-button label="Nuevo" theme="primary" icon="fa fa-plus-circle" class="float-right" data-toggle="modal"
+                data-target="#modalPurple" />
+        </div>
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 40], ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -30,18 +34,16 @@
 
             {{-- Minimal example / fill data using the component slot --}}
             <x-adminlte-datatable id="table1" :heads="$heads" :config="$config">
-                @foreach ($clientes as $cliente)
+                @foreach ($permisos as $permiso)
                     <tr>
-                        <td>{{ $cliente->id }}</td>
-                        <td>{{ $cliente->nombre }}</td>
-                        <td>{{ $cliente->apellido }}</td>
-                        <td>{{ $cliente->telefono }}</td>
+                        <td>{{ $permiso->id }}</td>
+                        <td>{{ $permiso->name }}</td>
                         <td>
-                            <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
+                            <a href="{{ route('permisos.edit', $permiso) }}" type="submit"
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </a>
-                            <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
+                            <form action="{{ route('permisos.destroy', $permiso) }}" method="POST" class="formEliminar"
                                 style="display: inline">
                                 @csrf
                                 @method('delete')
@@ -57,6 +59,19 @@
                 bordered compressed /> --}}
         </div>
     </div>
+    {{-- Themed --}}
+    <x-adminlte-modal id="modalPurple" title="Nuevo Permiso" theme="primary" icon="fas fa-bolt" size='lg'
+        disable-animations>
+        <form action="{{route('permisos.store')}}" method="POST">
+            @csrf
+            {{-- With label, invalid feedback disabled and form group class --}}
+            <div class="row">
+                <x-adminlte-input name="nombre" label="Nombre" placeholder="Aqui su Permiso.." fgroup-class="col-md-6"
+                    disable-feedback />
+            </div>
+            <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs"/>
+        </form>
+    </x-adminlte-modal>
 @stop
 
 @section('css')
@@ -64,7 +79,9 @@
 @stop
 
 @section('js')
-<script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
     <script>
         $(document).ready(function() {
             $('.formEliminar').submit(function(e) {

@@ -311,13 +311,20 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+
+        ['header' => 'USUARIOS'],
+
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Roles',
+            'route'         => 'roles.index',
+            'icon'        => 'fa fa-user-plus',
         ],
+        [
+            'text'        => 'Permisos',
+            'route'         => 'permisos.index',
+            'icon'        => 'fa fa-users',
+        ],
+
         ['header' => 'CLIENTES'],
         [
             'text' => 'Lista de Clientes',
@@ -329,6 +336,7 @@ return [
             'route'  => 'cliente.create',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',
