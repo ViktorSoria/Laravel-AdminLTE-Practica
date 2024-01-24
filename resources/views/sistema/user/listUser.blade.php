@@ -15,7 +15,7 @@
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', 'email', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -38,6 +38,7 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>
                             <a href="{{ route('asignar.edit', $user) }}" type="submit"
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">

@@ -8,6 +8,11 @@
 
 @section('content')
     <div class="card">
+        @can('Crear Cliente')
+            <div class="card-head">
+                <a href="{{ route('cliente.create') }}" class="btn btn-primary float-right mt-2 mr-2">Nuevo</a>
+            </div>
+        @endcan
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
@@ -41,12 +46,14 @@
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </a>
-                            <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
-                                style="display: inline">
-                                @csrf
-                                @method('delete')
-                                {!! $btnDelete !!}
-                            </form>
+                            @can('Eliminar Cliente')
+                                <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
+                                    style="display: inline">
+                                    @csrf
+                                    @method('delete')
+                                    {!! $btnDelete !!}
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -64,7 +71,9 @@
 @stop
 
 @section('js')
-<script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
     <script>
         $(document).ready(function() {
             $('.formEliminar').submit(function(e) {
