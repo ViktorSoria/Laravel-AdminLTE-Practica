@@ -10,6 +10,13 @@ class ClienteController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:Crear Cliente')->only('create');
+        $this->middleware('can:Eliminar Cliente')->only('destroy');
+    }
+
     public function index()
     {
         //
@@ -71,7 +78,7 @@ class ClienteController extends Controller
         //
         $cliente = Client::find($id);
 
-        return view('sistema.editCliente',compact('cliente'));
+        return view('sistema.editCliente', compact('cliente'));
     }
 
     /**
@@ -91,7 +98,7 @@ class ClienteController extends Controller
         $cliente->estado = $request->input('estado');
 
         $cliente->save();
-        return back()->with('message','Datos Actualizados 👌');
+        return back()->with('message', 'Datos Actualizados 👌');
     }
 
     /**

@@ -292,12 +292,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'type' => 'navbar-search',
+            'text' => 'search',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -308,37 +308,47 @@ return [
         ],
         [
             'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
 
-        ['header' => 'USUARIOS'],
+        [
+            'header' => 'USUARIOS',
+            'can' => 'AdministradorConfiguracion',
+        ],
 
         [
-            'text'        => 'Roles',
-            'route'         => 'roles.index',
-            'icon'        => 'fa fa-user-plus',
+            'text' => 'Roles',
+            'route' => 'roles.index',
+            'icon' => 'fa fa-user-plus',
+            'can' => 'AdministradorConfiguracion',
+
         ],
         [
-            'text'        => 'Permisos',
-            'route'         => 'permisos.index',
-            'icon'        => 'fa fa-users',
+            'text' => 'Permisos',
+            'route' => 'permisos.index',
+            'icon' => 'fa fa-users',
+            'can' => 'AdministradorConfiguracion',
+
         ],
         [
-            'text'        => 'Usuarios',
-            'route'         => 'asignar.index',
-            'icon'        => 'fa fa-users',
+            'text' => 'Usuarios',
+            'route' => 'asignar.index',
+            'icon' => 'fa fa-users',
+            'can' => 'AdministradorConfiguracion',
+
         ],
         ['header' => 'CLIENTES'],
         [
             'text' => 'Lista de Clientes',
-            'route'  => 'cliente.index',
+            'route' => 'cliente.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Nuevo Cliente',
-            'route'  => 'cliente.create',
+            'route' => 'cliente.create',
             'icon' => 'fas fa-fw fa-lock',
+            'can' => 'Crear Cliente'
         ],
 
         // [
@@ -381,19 +391,19 @@ return [
         // ],
         ['header' => 'labels'],
         [
-            'text'       => 'important',
+            'text' => 'important',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url' => '#',
         ],
         [
-            'text'       => 'warning',
+            'text' => 'warning',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url' => '#',
         ],
         [
-            'text'       => 'information',
+            'text' => 'information',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'url' => '#',
         ],
     ],
 
