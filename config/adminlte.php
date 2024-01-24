@@ -324,7 +324,11 @@ return [
             'route'         => 'permisos.index',
             'icon'        => 'fa fa-users',
         ],
-
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'asignar.index',
+            'icon'        => 'fa fa-users',
+        ],
         ['header' => 'CLIENTES'],
         [
             'text' => 'Lista de Clientes',
