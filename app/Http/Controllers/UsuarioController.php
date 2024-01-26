@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -29,6 +32,28 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //
+
+        // $fecha = Carbon::now();
+        $valoracion = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email|max:75',
+        //     // 'password' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
+        //     // 'password_confirmation' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'password' => 'required|string|min:8|confirmed',
+            // 'password_confirmation' => 'required|string|min:8',
+        ]);
+
+        // $usuario = new User();
+        // $usuario->name = $request->input('nombre');
+        // $usuario->email = $request->input('email');
+        // $usuario->email_verified_at = $fecha;
+        // $usuario->password = $request->input('password'); // Hashea la contraseña antes de guardarla
+        $user = User::create($request->only('name', 'email')
+        + ['password' => bcrypt($request->input('password'))]);
+
+        return $user;
+
+
     }
 
     /**

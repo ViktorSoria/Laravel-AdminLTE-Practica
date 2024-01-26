@@ -46,7 +46,6 @@ class ClienteController extends Controller
             'email' => 'required|email|unique:clients,email|max:75',
             // 'telefono' => 'required|numeric|regex:/^\d{10}$/',
             'telefono' => 'required|integer|digits:10',
-
         ]);
 
         $cliente = new Client();

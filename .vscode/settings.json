@@ -4,12 +4,18 @@
         "cliente",
         "Cliente",
         "Clientes",
+        "contraseña",
         "curp",
         "direccion",
         "estado",
+        "fecha",
+        "guardarla",
+        "Hashea",
         "Lista",
         "nombre",
         "telefono",
+        "usuario",
+        "Usuario",
         "valoracion"
     ],
     "php.version": "8.3"
