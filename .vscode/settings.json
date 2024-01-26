@@ -11,5 +11,6 @@
         "nombre",
         "telefono",
         "valoracion"
-    ]
+    ],
+    "php.version": "8.3"
 }

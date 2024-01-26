@@ -313,7 +313,7 @@ return [
         ],
 
         [
-            'header' => 'USUARIOS',
+            'header' => 'ADMINISTRACION',
             'can' => 'AdministradorConfiguracion',
         ],
 
@@ -334,7 +334,7 @@ return [
         [
             'text' => 'Usuarios',
             'route' => 'asignar.index',
-            'icon' => 'fa fa-users',
+            'icon' => 'fa fa-address-card',
             'can' => 'AdministradorConfiguracion',
 
         ],
@@ -347,7 +347,7 @@ return [
         [
             'text' => 'Nuevo Cliente',
             'route' => 'cliente.create',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-plus-circle',
             'can' => 'Crear Cliente'
         ],
 

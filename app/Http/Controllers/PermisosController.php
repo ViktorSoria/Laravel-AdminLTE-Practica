@@ -32,7 +32,14 @@ class PermisosController extends Controller
     public function store(Request $request)
     {
         //
-        $permission = Permission::create(['name' => $request->input('nombre')]);;
+        $request->validate([
+            'nombre' => 'required|string', // El campo 'nombre' es requerido y debe ser una cadena
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.string' => 'El campo nombre debe ser una cadena de texto.',
+        ]);
+        $permission = Permission::create(['name' => $request->input('nombre')]);
+        ;
 
         return back();
     }
@@ -51,6 +58,10 @@ class PermisosController extends Controller
     public function edit(string $id)
     {
         //
+        $permisos = Permission::find($id);
+
+        return view('sistema.editPermiso', compact('permisos'));
+
     }
 
     /**
@@ -59,6 +70,13 @@ class PermisosController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $permisos = Permission::find($id);
+
+        $permisos->name = $request->input('nombre');
+
+        $permisos->save();
+
+        return redirect()->route('permisos.index')->with('message', 'Permiso Actualizado 👌');
     }
 
     /**
@@ -67,5 +85,8 @@ class PermisosController extends Controller
     public function destroy(string $id)
     {
         //
+        $permisos = Permission::find($id);
+        $permisos->delete();
+        return back();
     }
 }

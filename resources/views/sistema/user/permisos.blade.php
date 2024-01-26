@@ -8,8 +8,21 @@
 
 @section('content')
     <div class="card">
+        @php
+            if (session()) {
+                if (session('message') == 'Permiso Actualizado 👌') {
+                    # code...
+                    echo '<x-adminlte-alert class="bg-teal text-uppercase text-center"
+                    icon="fa fa-lg fa-thumbs-up" title="Exito" dismissable id="exito">
+                    Permiso Actualizado 👌
+                    </x-adminlte-alert>';
+                }
+                # code...
+            }
+        @endphp
         <div class="card-header">
-            <x-adminlte-button label="Nuevo" theme="primary" icon="fa fa-plus-circle" class="float-right" data-toggle="modal" data-target="#modalPurple" />
+            <x-adminlte-button label="Nuevo" theme="primary" icon="fa fa-plus-circle" class="float-right" data-toggle="modal"
+                data-target="#modalPurple" />
         </div>
         <div class="card-body">
             {{-- Setup data for datatables --}}
@@ -61,14 +74,17 @@
     {{-- Themed --}}
     <x-adminlte-modal id="modalPurple" title="Nuevo Permiso" theme="primary" icon="fas fa-bolt" size='lg'
         disable-animations>
-        <form action="{{route('permisos.store')}}" method="POST">
+        <form action="{{ route('permisos.store') }}" method="POST">
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}
             <div class="row">
                 <x-adminlte-input name="nombre" label="Nombre" placeholder="Aqui su Permiso.." fgroup-class="col-md-6"
-                    disable-feedback />
+                    value="{{ old('nombre') }}" />
+                @error('nombre')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
-            <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs"/>
+            <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs" />
         </form>
     </x-adminlte-modal>
 @stop
@@ -81,24 +97,65 @@
     <script>
         console.log('Hi!');
     </script>
+
     <script>
         $(document).ready(function() {
             $('.formEliminar').submit(function(e) {
                 e.preventDefault();
-                Swal.fire({
-                    title: "Estas Seguro???",
-                    text: "Se Eliminara el registro!!!",
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: "btn btn-outline-success m-1",
+                        cancelButton: "btn btn-outline-danger m-1"
+                    },
+                    buttonsStyling: false
+                });
+
+                swalWithBootstrapButtons.fire({
+                    title: "Estas seguro?",
+                    text: "No podra revertir esta accion",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Si, Borrar!"
+                    confirmButtonText: "Si, Borralo!",
+                    cancelButtonText: "No, cancelalo!",
+                    reverseButtons: false
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.submit();
+                        swalWithBootstrapButtons.fire({
+                            title: "Borrado!",
+                            text: "Tu permiso ha sido borrado.",
+                            icon: "success"
+                        }).then(() => {
+                            // Una vez que el usuario confirme, enviamos el formulario
+                            this.submit();
+                        });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithBootstrapButtons.fire({
+                            title: "Cancelado",
+                            text: "Tu permiso esta a salvo :)",
+                            icon: "error"
+                        });
                     }
                 });
-            })
-        })
+            });
+        });
     </script>
+
+    @if (session('message'))
+        <script>
+            $(document).ready(function() {
+                let mensaje = "{{ session('message') }}";
+                Swal.fire({
+                    title: 'Resultado',
+                    text: mensaje,
+                    icon: 'success',
+                });
+
+                // Ocultar el mensaje después de 4 segundos
+                setTimeout(function() {
+                    document.getElementById("exito").style.display = "none";
+                }, 4000);
+            });
+        </script>
+    @endif
+
 @stop
