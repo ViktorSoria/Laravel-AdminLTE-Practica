@@ -33,6 +33,13 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre' => 'required|string', // El campo 'nombre' es requerido y debe ser una cadena
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.string' => 'El campo nombre debe ser una cadena de texto.',
+        ]);
+
         $role = Role::create(['name' => $request->input('nombre')]);
         return back();
     }
@@ -74,5 +81,8 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         //
+        $role = Role::findOrFail($id);
+        $role->delete();
+        return back();
     }
 }
