@@ -52,7 +52,7 @@ class UsuarioController extends Controller
         + ['password' => bcrypt($request->input('password'))]);
 
         return $user;
-
+        // return view('sistema.user.listUser');
 
     }
 
