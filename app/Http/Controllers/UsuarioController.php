@@ -37,8 +37,8 @@ class UsuarioController extends Controller
         $valoracion = $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email|max:75',
-        //     // 'password' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
-        //     // 'password_confirmation' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            // 'password' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/|confirmed',
+            // 'password_confirmation' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
             'password' => 'required|string|min:8|confirmed',
             // 'password_confirmation' => 'required|string|min:8',
         ]);
@@ -51,8 +51,8 @@ class UsuarioController extends Controller
         $user = User::create($request->only('name', 'email')
         + ['password' => bcrypt($request->input('password'))]);
 
-        return $user;
-        // return view('sistema.user.listUser');
+        // return $user;
+        return redirect()->route('asignar.index');
 
     }
 

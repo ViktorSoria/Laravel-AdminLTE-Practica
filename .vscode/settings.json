@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "apellido",
+        "asignar",
         "cliente",
         "Cliente",
         "Clientes",
@@ -11,11 +12,14 @@
         "fecha",
         "guardarla",
         "Hashea",
+        "jetstream",
         "Lista",
         "nombre",
+        "permisos",
         "telefono",
         "usuario",
         "Usuario",
+        "usuarios",
         "valoracion"
     ],
     "php.version": "8.3"
