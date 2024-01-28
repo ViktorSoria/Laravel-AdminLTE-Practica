@@ -66,8 +66,8 @@
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}
             <div class="row">
-                <x-adminlte-input name="nombre" label="Nombre" placeholder="Aqui su nuevo Rol a crear.." fgroup-class="col-md-6"
-                    disable-feedback />
+                <x-adminlte-input name="nombre" label="Nombre del Rol nuevo" placeholder="Aqui su nuevo Rol a crear.." fgroup-class="col-md-6"
+                    disable-feedback required/>
             </div>
             <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs"/>
         </form>

@@ -78,11 +78,10 @@
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}
             <div class="row">
-                <x-adminlte-input name="nombre" label="Nombre" placeholder="Aqui su Permiso.." fgroup-class="col-md-6"
-                    value="{{ old('nombre') }}" />
-                @error('nombre')
+                <x-adminlte-input name="nombre" label="Nombre del nuevo Permiso" placeholder="Aqui su Permiso.." fgroup-class="col-md-6" disable-feedback required />
+                {{-- @error('nombre')
                     <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                @enderror --}}
             </div>
             <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs" />
         </form>

@@ -72,7 +72,7 @@
             <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />
 
             {{-- <a href="/client" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a> --}}
-            <a href="{{ route('user.index') }}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
+            <a href="{{ route('asignar.index') }}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
 
         </form>
     </div>
