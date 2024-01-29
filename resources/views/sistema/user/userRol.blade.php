@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <p>{{$user->name}}</p>
+            <h4><strong><u>{{$user->name}}</u></strong></h4>
         </div>
         <div class="card-body">
             <h5>LISTA DE ROLES</h5>

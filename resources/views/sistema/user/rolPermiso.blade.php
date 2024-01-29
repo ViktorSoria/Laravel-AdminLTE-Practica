@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Roles y Permisos</h1>
+    <h1>Roles y sus Permisos</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <p>{{$role->name}}</p>
+            <h4><strong><u>{{$role->name}}</u></strong></h4>
         </div>
         <div class="card-body">
             <h5>LISTA DE PERMISOS</h5>
@@ -22,8 +22,9 @@
                 </label>
             </div>
             @endforeach
-            {!! Form::submit("Asignar Permisos", ['class'=>'btn btn-primary mt-3']) !!}
+            {!! Form::submit("Asignar Permisos", ['class'=>'btn btn-primary float-left mt-3']) !!}
             {!! Form::close() !!}
+            <a href="{{route('roles.index')}}" class="btn btn-primary float-right mt-3" icon="fas fa-save">Cancelar</a>
         </div>
     </div>
 @stop

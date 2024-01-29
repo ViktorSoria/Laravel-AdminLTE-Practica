@@ -33,8 +33,8 @@
             </x-adminlte-input>
 
             {{-- Campo de contraseña para 'password' --}}
-            <x-adminlte-input type="password" name="password" label="PASSWORD" placeholder="" required label-class="text-lightblue"
-                value="{{ old('password') }}">
+            <x-adminlte-input type="password" name="password" label="PASSWORD" placeholder="" required
+                label-class="text-lightblue">
                 <x-slot name="prependSlot">
                     <div class="input-group-text">
                         <i class="fa fa-lock text-lightblue"></i>
@@ -51,8 +51,8 @@
             </x-adminlte-input>
 
             {{-- Campo de contraseña para 'password_confirmation' --}}
-            <x-adminlte-input type="password" name="password_confirmation" label="CONFIRMAR PASSWORD" placeholder="" required
-                label-class="text-lightblue" value="{{ old('password') }}">
+            <x-adminlte-input type="password" name="password_confirmation" label="CONFIRMAR PASSWORD" placeholder=""
+                required label-class="text-lightblue"">
                 <x-slot name="prependSlot">
                     <div class="input-group-text">
                         <i class="fa fa-lock text-lightblue"></i>

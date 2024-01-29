@@ -27,7 +27,7 @@
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
+                value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus required>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -45,7 +45,7 @@
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                placeholder="{{ __('adminlte::adminlte.password') }}">
+                placeholder="{{ __('adminlte::adminlte.password') }}" required>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-5">
                 <div class="icheck-primary" title="{{ __('adminlte::adminlte.remember_me_hint') }}">
-                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} checked>
 
                     <label for="remember">
                         {{ __('adminlte::adminlte.remember_me') }}

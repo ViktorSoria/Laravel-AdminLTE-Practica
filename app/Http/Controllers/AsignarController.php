@@ -66,7 +66,7 @@ class AsignarController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('asignar.edit', $user);
+        return redirect()->route('asignar.index', $user);
     }
 
     /**
