@@ -14,7 +14,7 @@
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', 'email', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', 'Email', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">

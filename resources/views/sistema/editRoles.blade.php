@@ -3,11 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edicion de Permiso</h1>
+    <h1>Edicion de Roles CHEKAR</h1>
 @stop
 
 @section('content')
-    <p>Ingrese la informacion del Permiso "Recuerda cambiarlas"</p>
+    {{-- <p>Ingrese la informacion del Permiso "Recuerda cambiarlas"</p> --}}
 
     <div class="card">
         <div class="card-body">
