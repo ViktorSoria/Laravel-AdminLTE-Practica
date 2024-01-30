@@ -99,7 +99,7 @@ class ClienteController extends Controller
         $cliente->estado = $request->input('estado');
 
         $cliente->save();
-        return back()->with('message', 'Datos Actualizados 👌');
+        return redirect()->route('cliente.index')->with('message', 'Datos Actualizados 👌');
     }
 
     /**

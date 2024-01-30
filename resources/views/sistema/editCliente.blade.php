@@ -107,6 +107,8 @@
 
                 {{-- Themes + icons --}}
                 <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />
+                <a href="{{ route('cliente.index') }}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
+
             </form>
         </div>
     </div>

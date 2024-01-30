@@ -49,7 +49,10 @@ class UsuarioController extends Controller
         // $usuario->email_verified_at = $fecha;
         // $usuario->password = $request->input('password'); // Hashea la contraseña antes de guardarla
         $user = User::create($request->only('name', 'email')
-        + ['password' => bcrypt($request->input('password'))]);
+        + ['password' => bcrypt($request->input('password'))
+        + ['email_verified_at' => Carbon::now()]
+
+    ]);
 
         // return $user;
         return redirect()->route('asignar.index');
