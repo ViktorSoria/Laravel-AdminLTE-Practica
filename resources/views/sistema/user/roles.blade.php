@@ -34,16 +34,16 @@
 
             {{-- Minimal example / fill data using the component slot --}}
             <x-adminlte-datatable id="table1" :heads="$heads" :config="$config">
-                {{-- @foreach ($roles as $role)
+                @foreach ($roles as $role)
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
                         <td>
-                            @forelse ($user->roles as $role)
+                            {{-- @forelse ($user->roles as $role)
                                 <span class="badge badge-info">{{ $role->name }}</span>
                             @empty
                                 <span class="badge badge-danger">Sin Permisos</span>
-                            @endforelse
+                            @endforelse --}}
                         </td>
 
                         <td>
@@ -59,15 +59,17 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach --}}
+                @endforeach
 
-                @foreach ($roles as $role)
+                {{-- @foreach ($roles as $role)
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
                         <td>
-                            @if ($permiso->$permisos->$permiso)
-                                <span class="badge badge-info">{{ $permiso->name }}</span>
+                            @if ($role->permissions->isNotEmpty())
+                                @foreach ($role->permissions as $permission)
+                                    <span class="badge badge-info">{{ $permission->name }}</span>
+                                @endforeach
                             @else
                                 <span class="badge badge-danger">Sin Permisos</span>
                             @endif
@@ -85,7 +87,7 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @endforeach --}}
 
             </x-adminlte-datatable>
 
