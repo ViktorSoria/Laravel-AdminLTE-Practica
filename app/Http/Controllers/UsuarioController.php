@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
 {
@@ -49,10 +50,9 @@ class UsuarioController extends Controller
         // $usuario->email_verified_at = $fecha;
         // $usuario->password = $request->input('password'); // Hashea la contraseña antes de guardarla
         $user = User::create($request->only('name', 'email')
-        + ['password' => bcrypt($request->input('password'))
-        + ['email_verified_at' => Carbon::now()]
-
-    ]);
+            + ['password' => bcrypt($request->input('password'))]
+            + ['email_verified_at' => Carbon::now()]
+        );
 
         // return $user;
         return redirect()->route('asignar.index');

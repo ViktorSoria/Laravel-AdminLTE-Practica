@@ -15,7 +15,7 @@
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', 'Permisos', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -34,10 +34,44 @@
 
             {{-- Minimal example / fill data using the component slot --}}
             <x-adminlte-datatable id="table1" :heads="$heads" :config="$config">
+                {{-- @foreach ($roles as $role)
+                    <tr>
+                        <td>{{ $role->id }}</td>
+                        <td>{{ $role->name }}</td>
+                        <td>
+                            @forelse ($user->roles as $role)
+                                <span class="badge badge-info">{{ $role->name }}</span>
+                            @empty
+                                <span class="badge badge-danger">Sin Permisos</span>
+                            @endforelse
+                        </td>
+
+                        <td>
+                            <a href="{{ route('roles.edit', $role) }}" type="submit"
+                                class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                                <i class="fa fa-lg fa-fw fa-pen"></i>
+                            </a>
+                            <form action="{{ route('roles.destroy', $role) }}" method="POST" class="formEliminar"
+                                style="display: inline">
+                                @csrf
+                                @method('delete')
+                                {!! $btnDelete !!}
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach --}}
+
                 @foreach ($roles as $role)
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
+                        <td>
+                            @if ($permiso->$permisos->$permiso)
+                                <span class="badge badge-info">{{ $permiso->name }}</span>
+                            @else
+                                <span class="badge badge-danger">Sin Permisos</span>
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('roles.edit', $role) }}" type="submit"
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -52,6 +86,7 @@
                         </td>
                     </tr>
                 @endforeach
+
             </x-adminlte-datatable>
 
             {{-- Compressed with style options / fill data using the plugin config --}}
@@ -62,14 +97,14 @@
     {{-- Themed --}}
     <x-adminlte-modal id="modalPurple" title="Nuevo Rol" theme="primary" icon="fas fa-bolt" size='lg'
         disable-animations>
-        <form action="{{route('roles.store')}}" method="POST">
+        <form action="{{ route('roles.store') }}" method="POST">
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}
             <div class="row">
-                <x-adminlte-input name="nombre" label="Nombre del Rol nuevo" placeholder="Aqui su nuevo Rol a crear.." fgroup-class="col-md-6"
-                    disable-feedback required/>
+                <x-adminlte-input name="nombre" label="Nombre del Rol nuevo" placeholder="Aqui su nuevo Rol a crear.."
+                    fgroup-class="col-md-6" disable-feedback required />
             </div>
-            <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs"/>
+            <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs" />
         </form>
     </x-adminlte-modal>
 @stop

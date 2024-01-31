@@ -9,12 +9,13 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('user.index')}}" class="btn btn-primary float-right"> <i class="fa fa-plus-circle"></i>Nuevo</a>
+            <a href="{{ route('user.index') }}" class="btn btn-primary float-right" rel="tooltip" title="Nuevo Usuario"> <i
+                    class="fa fa-plus-circle"></i> Nuevo</a>
         </div>
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
-                $heads = ['ID', 'Nombre', 'Email', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                $heads = ['ID', 'Nombre', 'Rol', ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -37,7 +38,14 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
+                        {{-- <td>{{ $user->email }}</td> --}}
+                        <td>
+                            @forelse ($user->roles as $role)
+                                <span class="badge badge-info">{{ $role->name }}</span>
+                            @empty
+                                <span class="badge badge-danger">No tiene rol</span>
+                            @endforelse
+                        </td>
                         <td>
                             <a href="{{ route('asignar.edit', $user) }}" type="submit"
                                 class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -53,6 +61,8 @@
                     </tr>
                 @endforeach
             </x-adminlte-datatable>
+
+
 
             {{-- Compressed with style options / fill data using the plugin config --}}
             {{-- <x-adminlte-datatable id="table2" :heads="$heads" head-theme="dark" :config="$config" striped hoverable
