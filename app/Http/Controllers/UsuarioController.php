@@ -54,6 +54,11 @@ class UsuarioController extends Controller
             + ['email_verified_at' => Carbon::now()]
         );
 
+        $defaultRole = Role::where('name', 'Usuario')->first();
+        if ($defaultRole) {
+            $user->assignRole($defaultRole);
+        }
+
         // return $user;
         return redirect()->route('asignar.index');
 

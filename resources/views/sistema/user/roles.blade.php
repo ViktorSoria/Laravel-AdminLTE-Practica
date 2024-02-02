@@ -19,11 +19,11 @@
 
                 $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                  <i class="fa fa-lg fa-fw fa-trash"></i>
-              </button>';
+            <i class="fa fa-lg fa-fw fa-trash"></i>
+        </button>';
                 $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                   <i class="fa fa-lg fa-fw fa-eye"></i>
-               </button>';
+            <i class="fa fa-lg fa-fw fa-eye"></i>
+        </button>';
 
                 $config = [
                     'language' => [
@@ -39,11 +39,11 @@
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
                         <td>
-                            {{-- @forelse ($user->roles as $role)
-                                <span class="badge badge-info">{{ $role->name }}</span>
+                            @forelse ($role->permissions as $permission)
+                                <span class="badge badge-info">{{ $permission->name }}</span>
                             @empty
                                 <span class="badge badge-danger">Sin Permisos</span>
-                            @endforelse --}}
+                            @endforelse
                         </td>
 
                         <td>
@@ -61,33 +61,7 @@
                     </tr>
                 @endforeach
 
-                {{-- @foreach ($roles as $role)
-                    <tr>
-                        <td>{{ $role->id }}</td>
-                        <td>{{ $role->name }}</td>
-                        <td>
-                            @if ($role->permissions->isNotEmpty())
-                                @foreach ($role->permissions as $permission)
-                                    <span class="badge badge-info">{{ $permission->name }}</span>
-                                @endforeach
-                            @else
-                                <span class="badge badge-danger">Sin Permisos</span>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('roles.edit', $role) }}" type="submit"
-                                class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                <i class="fa fa-lg fa-fw fa-pen"></i>
-                            </a>
-                            <form action="{{ route('roles.destroy', $role) }}" method="POST" class="formEliminar"
-                                style="display: inline">
-                                @csrf
-                                @method('delete')
-                                {!! $btnDelete !!}
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach --}}
+
 
             </x-adminlte-datatable>
 

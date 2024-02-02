@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class ClienteController extends Controller
 {
@@ -11,17 +17,21 @@ class ClienteController extends Controller
      * Display a listing of the resource.
      */
 
-    public function __construct()
-    {
-        $this->middleware('can:Crear Cliente')->only('create');
-        $this->middleware('can:Eliminar Cliente')->only('destroy');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can:Crear_Usuario')->only('create');
+    //     $this->middleware('can:Editar_Usuario')->only('edit');
+    //     $this->middleware('can:Eliminar_Usuario')->only('destroy');
+    // }
 
     public function index()
     {
         //
+        $usuario = Auth::user();
+        $rolUsuario = $usuario->getRoleNames()->first();
         $clientes = Client::all();
-        return view('sistema.listCliente', compact('clientes'));
+
+        return view('sistema.listCliente', compact('clientes', 'rolUsuario'));
     }
 
     /**
@@ -30,6 +40,9 @@ class ClienteController extends Controller
     public function create()
     {
         //
+        if (! Gate::allows('Crear_Usuario')) {
+            abort(403);
+        }
         return view('sistema.addCliente');
     }
 
@@ -69,6 +82,9 @@ class ClienteController extends Controller
     public function show(string $id)
     {
         //
+        if (! Gate::allows('Ver_Usuario')) {
+            abort(403);
+        }
     }
 
     /**
@@ -77,6 +93,10 @@ class ClienteController extends Controller
     public function edit(string $id)
     {
         //
+        if (! Gate::allows('Editar_Usuario')) {
+            abort(403);
+        }
+
         $cliente = Client::find($id);
 
         return view('sistema.editCliente', compact('cliente'));
@@ -99,6 +119,7 @@ class ClienteController extends Controller
         $cliente->estado = $request->input('estado');
 
         $cliente->save();
+
         return redirect()->route('cliente.index')->with('message', 'Datos Actualizados 👌');
     }
 
@@ -108,6 +129,9 @@ class ClienteController extends Controller
     public function destroy(string $id)
     {
         //
+        if (! Gate::allows('Eliminar_Usuario')) {
+            abort(403);
+        }
         $cliente = Client::find($id);
         $cliente->delete();
         return back();
