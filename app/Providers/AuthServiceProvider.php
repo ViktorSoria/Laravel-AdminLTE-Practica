@@ -26,16 +26,20 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        Gate::define('Crear_Usuario', function ($user) {
-            return $user->hasRole('Administrador');
-        });
+        // Gate::define('Leer_Usuario', function ($user) {
+        //     return $user->hasRole('Usuario');
+        // });
 
-        Gate::define('Editar_Usuario', function ($user) {
-            return $user->hasRole('Administrador');
-        });
+        // Gate::define('Crear_Usuario', function ($user) {
+        //     return $user->hasRole('Administrador');
+        // });
 
-        Gate::define('Eliminar_Usuario', function ($user) {
-            return $user->hasRole('Administrador');
-        });
+        // Gate::define('Editar_Usuario', function ($user) {
+        //     return $user->hasRole('Administrador');
+        // });
+
+        // Gate::define('Eliminar_Usuario', function ($user) {
+        //     return $user->hasRole('Administrador');
+        // });
     }
 }

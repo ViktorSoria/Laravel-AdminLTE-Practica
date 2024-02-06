@@ -27,6 +27,9 @@ class ClienteController extends Controller
     public function index()
     {
         //
+        if (! Gate::allows('Leer_Usuario')) {
+            abort(403);
+        }
         $usuario = Auth::user();
         $rolUsuario = $usuario->getRoleNames()->first();
         $clientes = Client::all();

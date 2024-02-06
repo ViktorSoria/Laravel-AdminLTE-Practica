@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -14,6 +15,11 @@ class RoleController extends Controller
     public function index()
     {
         //
+
+        if (! Gate::allows('Crear_Usuario')) {
+            abort(403);
+        }
+
         $roles = Role::all();
 
         return view('sistema.user.roles', compact('roles'));
@@ -33,6 +39,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+
         $request->validate([
             'nombre' => 'required|string', // El campo 'nombre' es requerido y debe ser una cadena
         ], [
@@ -59,6 +66,10 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
+        if (! Gate::allows('Editar_Usuario')) {
+            abort(403);
+        }
+
         // $role = Role::find($id);
         $permisos = Permission::all();
         return view('sistema.user.rolPermiso', compact('role', 'permisos'));
@@ -83,6 +94,10 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         //
+
+        if (! Gate::allows('Eliminar_Usuario')) {
+            abort(403);
+        }
         $role = Role::findOrFail($id);
         $role->delete();
         return back();

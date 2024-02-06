@@ -322,7 +322,6 @@ return [
             'route' => 'roles.index',
             'icon' => 'fa fa-user-plus',
             'can' => 'AdministradorConfiguracion',
-
         ],
         [
             'text' => 'Permisos',
@@ -348,7 +347,7 @@ return [
             'text' => 'Nuevo Cliente',
             'route' => 'cliente.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            'can' => 'Crear Cliente'
+            'can' => 'Crear_Usuario'
         ],
 
         // [
@@ -389,22 +388,22 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+        // ['header' => 'labels'],
+        // [
+        //     'text' => 'important',
+        //     'icon_color' => 'red',
+        //     'url' => '#',
+        // ],
+        // [
+        //     'text' => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url' => '#',
+        // ],
+        // [
+        //     'text' => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url' => '#',
+        // ],
     ],
 
     /*
