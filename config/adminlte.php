@@ -16,7 +16,7 @@ return [
 
     'title' => 'Practica AdminLTE',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => '| Practica  ',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -314,27 +314,27 @@ return [
 
         [
             'header' => 'ADMINISTRACION',
-            'can' => 'AdministradorConfiguracion',
+            // 'can' => 'AdministradorConfiguracion',
         ],
 
         [
             'text' => 'Roles',
             'route' => 'roles.index',
             'icon' => 'fa fa-user-plus',
-            'can' => 'AdministradorConfiguracion',
+            // 'can' => 'AdministradorConfiguracion',
         ],
         [
             'text' => 'Permisos',
             'route' => 'permisos.index',
             'icon' => 'fa fa-users',
-            'can' => 'AdministradorConfiguracion',
+            // 'can' => 'AdministradorConfiguracion',
 
         ],
         [
             'text' => 'Usuarios',
             'route' => 'asignar.index',
             'icon' => 'fa fa-address-card',
-            'can' => 'AdministradorConfiguracion',
+            // 'can' => 'AdministradorConfiguracion',
 
         ],
         ['header' => 'CLIENTES'],
@@ -347,7 +347,7 @@ return [
             'text' => 'Nuevo Cliente',
             'route' => 'cliente.create',
             'icon' => 'fas fa-fw fa-plus-circle',
-            'can' => 'Crear_Usuario'
+            // 'can' => 'Crear_Usuario'
         ],
 
         // [

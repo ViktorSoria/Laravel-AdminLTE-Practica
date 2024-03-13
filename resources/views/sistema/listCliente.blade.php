@@ -8,11 +8,11 @@
 
 @section('content')
     <div class="card">
-        @can('Crear_Usuario')
+        {{-- @can('Crear_Usuario') --}}
             <div class="card-head">
                 <a href="{{ route('cliente.create') }}" class="btn btn-primary float-right mt-2 mr-2">Nuevo</a>
             </div>
-        @endcan
+        {{-- @endcan --}}
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php

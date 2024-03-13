@@ -27,9 +27,9 @@ class ClienteController extends Controller
     public function index()
     {
         //
-        if (! Gate::allows('Leer_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Leer_Usuario')) {
+        //     abort(403);
+        // }
         $usuario = Auth::user();
         $rolUsuario = $usuario->getRoleNames()->first();
         $clientes = Client::all();
@@ -43,9 +43,9 @@ class ClienteController extends Controller
     public function create()
     {
         //
-        if (! Gate::allows('Crear_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Crear_Usuario')) {
+        //     abort(403);
+        // }
         return view('sistema.addCliente');
     }
 
@@ -85,9 +85,9 @@ class ClienteController extends Controller
     public function show(string $id)
     {
         //
-        if (! Gate::allows('Ver_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Ver_Usuario')) {
+        //     abort(403);
+        // }
     }
 
     /**
@@ -96,9 +96,9 @@ class ClienteController extends Controller
     public function edit(string $id)
     {
         //
-        if (! Gate::allows('Editar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Editar_Usuario')) {
+        //     abort(403);
+        // }
 
         $cliente = Client::find($id);
 
@@ -132,9 +132,9 @@ class ClienteController extends Controller
     public function destroy(string $id)
     {
         //
-        if (! Gate::allows('Eliminar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Eliminar_Usuario')) {
+        //     abort(403);
+        // }
         $cliente = Client::find($id);
         $cliente->delete();
         return back();

@@ -14,9 +14,9 @@ class PermisosController extends Controller
     public function index()
     {
         //
-        if (! Gate::allows('Crear_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Crear_Usuario')) {
+        //     abort(403);
+        // }
         $permisos = Permission::all();
 
         return view('sistema.user.permisos', compact('permisos'));
@@ -62,9 +62,9 @@ class PermisosController extends Controller
     public function edit(string $id)
     {
         //
-        if (! Gate::allows('Editar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Editar_Usuario')) {
+        //     abort(403);
+        // }
         $permisos = Permission::find($id);
 
         return view('sistema.editPermiso', compact('permisos'));
@@ -92,9 +92,9 @@ class PermisosController extends Controller
     public function destroy(string $id)
     {
         //
-        if (! Gate::allows('Eliminar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Eliminar_Usuario')) {
+        //     abort(403);
+        // }
         $permisos = Permission::find($id);
         $permisos->delete();
         return back();

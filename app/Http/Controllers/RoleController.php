@@ -16,9 +16,9 @@ class RoleController extends Controller
     {
         //
 
-        if (! Gate::allows('Crear_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Crear_Usuario')) {
+        //     abort(403);
+        // }
 
         $roles = Role::all();
 
@@ -66,9 +66,9 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
-        if (! Gate::allows('Editar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Editar_Usuario')) {
+        //     abort(403);
+        // }
 
         // $role = Role::find($id);
         $permisos = Permission::all();
@@ -95,9 +95,9 @@ class RoleController extends Controller
     {
         //
 
-        if (! Gate::allows('Eliminar_Usuario')) {
-            abort(403);
-        }
+        // if (! Gate::allows('Eliminar_Usuario')) {
+        //     abort(403);
+        // }
         $role = Role::findOrFail($id);
         $role->delete();
         return back();
