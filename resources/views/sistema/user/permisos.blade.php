@@ -72,8 +72,7 @@
         </div>
     </div>
     {{-- Themed --}}
-    <x-adminlte-modal id="modalPurple" title="Nuevo Permiso" theme="primary" icon="fas fa-bolt" size='lg'
-        disable-animations>
+    <x-adminlte-modal id="modalPurple" title="Nuevo Permiso" theme="teal" icon="fas fa-bolt" size='lg'>
         <form action="{{ route('permisos.store') }}" method="POST">
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}

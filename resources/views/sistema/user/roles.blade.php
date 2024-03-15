@@ -71,7 +71,7 @@
         </div>
     </div>
     {{-- Themed --}}
-    <x-adminlte-modal id="modalPurple" title="Nuevo Rol" theme="primary" icon="fas fa-bolt" size='lg'
+    <x-adminlte-modal id="modalPurple" title="Nuevo Rol" theme="teal" icon="fas fa-bolt" size='lg'
         disable-animations>
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf

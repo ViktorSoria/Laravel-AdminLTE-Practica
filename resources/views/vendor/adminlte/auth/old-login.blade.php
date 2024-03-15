@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <div class="social-auth-links text-center mt-3 text-lightblue text-bold">
+        <div class="social-auth-links text-center mt-3 text-white text-bold">
             <p>- Ó -</p>
             {{-- Register button Gmail --}}
             <a href="{{ url('/auth/redirect') }}" class="btn btn-block btn-danger"
