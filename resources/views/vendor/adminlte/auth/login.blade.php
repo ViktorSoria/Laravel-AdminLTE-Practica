@@ -51,8 +51,19 @@
                             </div>
                         </div>
                     </div>
+  <?php
+
+    // dd(Auth::user()->name);
+    if(isset(Auth::user()->name)){
+        echo "Si existe";
+        header('Location: http://127.0.0.1:8000/dashboard');
+        exit();
+    }
+  ?>
                     <div class="col-md-8 col-lg-6 col-xl-6">
-                        <form class="px-4 px-lg-5 mx-lg-5 pt-4 pt-md-0">
+                        <form action="{{ $login_url }}" method="post" class="px-4 px-lg-5 mx-lg-5 pt-4 pt-md-0">
+                            @csrf
+
                             <div class="d-flex flex-row align-items-center justify-content-center">
                                 <p class="h4 mb-0">Inicia sesión con
                                 </p>
