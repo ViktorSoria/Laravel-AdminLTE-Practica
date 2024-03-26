@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware([ 
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
@@ -32,6 +32,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::resource('/client', ClienteController::class)->names('cliente');
+    // Route::resource('/movimientos', MovimientosController::class)->names('movimientos');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisosController::class)->names('permisos');
     Route::resource('/usuarios', AsignarController::class)->names('asignar');

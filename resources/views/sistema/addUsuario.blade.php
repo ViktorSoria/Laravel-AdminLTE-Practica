@@ -9,7 +9,7 @@
 @section('content')
     <div class="card-body">
         <form action="{{ route('user.store') }}" method="POST">
-            @csrf 
+            @csrf
 
             {{-- With prepend slot --}}
             <x-adminlte-input type="text" name="name" label="NOMBRE COMPLETO" placeholder="
@@ -79,7 +79,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

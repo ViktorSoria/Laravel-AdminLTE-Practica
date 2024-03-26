@@ -11,7 +11,7 @@
         <div class="card-header">
             <a href="{{ route('user.index') }}" class="btn btn-primary float-right" rel="tooltip" title="Nuevo Usuario"> <i
                     class="fa fa-plus-circle"></i> Nuevo</a>
-        </div>  
+        </div>
         <div class="card-body">
             {{-- Setup data for datatables --}}
             @php
@@ -72,7 +72,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

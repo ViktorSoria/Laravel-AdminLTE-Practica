@@ -6,7 +6,7 @@
     <h1>Lista de Empleados</h1>
 @stop
 
-@section('content') 
+@section('content')
     <div class="card">
         {{-- @can('Crear_Usuario') --}}
             <div class="card-head">
@@ -17,9 +17,9 @@
             {{-- Setup data for datatables --}}
             @php
                 if ($rolUsuario === 'Administrador') {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', 'Direccion', 'Fecha Ingreso', 'Tipo Contratacion',  ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Fecha Ingreso', 'Tipo Contratacion',  ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
                 } else {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', 'Direccion', 'Fecha Ingreso', 'Tipo Contratacion'];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Fecha Ingreso', 'Tipo Contratacion'];
                 }
 
                 $btnEdit = '';
@@ -51,19 +51,23 @@
                         <td>{{ $cliente->fecha_Ingreso  }}</td>
                         <td>{{ $cliente->tipo_Contratacion  }}</td>
 
-                            <td>
-                                <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
-                                    class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                    <i class="fa fa-lg fa-fw fa-pen"></i>
-                                </a>
-                                <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
-                                    style="display: inline">
-                                    @csrf
-                                    @method('delete')
-                                    {!! $btnDelete !!}
-                                </form>
-                            </td>
-                        
+@can('Actualizar');
+<td>
+
+    <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
+    class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+    <i class="fa fa-lg fa-fw fa-pen"></i>
+    </a>
+    <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
+    style="display: inline">
+    @csrf
+    @method('delete')
+    {!! $btnDelete !!}
+    </form>
+</td>
+@endcan
+
+
                     </tr>
                 @endforeach
             </x-adminlte-datatable>
@@ -76,7 +80,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

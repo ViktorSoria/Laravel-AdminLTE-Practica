@@ -21,7 +21,7 @@
                 }
                 # code...
             }
-        @endphp 
+        @endphp
         <div class="card-body">
             <form action="{{ route('cliente.store') }}" method="POST">
                 @csrf
@@ -98,17 +98,16 @@
                 </x-adminlte-input>
 
                 {{-- With prepend slot, sm size and label --}}
-                <x-adminlte-textarea name="direccion" label="DIRECCION" rows=5 label-class="text-lightblue" igroup-size="sm"
-                    placeholder="Inserte su Direccion">
+                <x-adminlte-input name="direccion" label="DIRECCION" label-class="text-lightblue"
+                    placeholder="Inserte su Direccion" value="{{ old('direccion') }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text ">
                             <i class="fas fa-lg fa-file-alt text-lightblue"></i>
                         </div>
                     </x-slot>
-                    {{ old('direccion') }}
-                </x-adminlte-textarea>
+                </x-adminlte-input>
 
-                
+
 
                 {{-- With prepend slot, lg size, and label --}}
                 {{-- <x-adminlte-select name="estado" label="ESTADO CIVIL" label-class="text-lightblue" igroup-size="lg">
@@ -136,7 +135,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')
