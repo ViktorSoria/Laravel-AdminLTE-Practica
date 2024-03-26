@@ -17,9 +17,9 @@
             {{-- Setup data for datatables --}}
             @php
                 if ($rolUsuario === 'Administrador') {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Fecha Ingreso', 'Tipo Contratacion',  ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Alta', 'Contrato',  ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
                 } else {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Fecha Ingreso', 'Tipo Contratacion'];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', ['label' => 'Direccion', 'width' => 20], 'Alta', 'Contrato'];
                 }
 
                 $btnEdit = '';
@@ -47,9 +47,9 @@
                         <td>{{ $cliente->telefono }}</td>
                         <td>{{ $cliente->curp }}</td>
                         <td>{{ $cliente->email }}</td>
-                        <td>{{ $cliente->direccion  }}</td>
-                        <td>{{ $cliente->fecha_Ingreso  }}</td>
-                        <td>{{ $cliente->tipo_Contratacion  }}</td>
+                        <td>{{ $cliente->direccion }}</td>
+                        <td>{{ $cliente->alta }}</td>
+                        <td>{{ $cliente->contrato }}</td>
 
 @can('Actualizar');
 <td>

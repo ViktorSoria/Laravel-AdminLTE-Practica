@@ -19,6 +19,11 @@ return new class extends Migration {
             $table->string('telefono', 15);
             $table->string('direccion')->nullable();
             $table->string('estado',15)->nullable();
+            $table->string('alta',15)->nullable();
+            $table->string('contrato',50)->nullable();
+            $table->string('folio',8)->nullable();
+            $table->string('baja',15)->nullable();
+            $table->string('estatus',8)->nullable();
             $table->timestamps();
         });
     }

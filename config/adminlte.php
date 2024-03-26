@@ -313,7 +313,7 @@ return [
         ],
 
         ['header'    => ' '],
-        [ 
+        [
             'text'    => 'USER MANAGEMENT',
             'icon'    => 'fas fa-fw fa-file',
             'submenu' => [
@@ -358,7 +358,7 @@ return [
 
                 [
                     'text' => 'Movimientos',
-                    'url'  => '#',
+                    'route'  => 'movimientos.index',
                 ],
 
                 [

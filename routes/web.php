@@ -6,6 +6,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\MovimientosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::resource('/client', ClienteController::class)->names('cliente');
-    // Route::resource('/movimientos', MovimientosController::class)->names('movimientos');
+    Route::resource('/movimientos', MovimientosController::class)->names('movimientos');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisosController::class)->names('permisos');
     Route::resource('/usuarios', AsignarController::class)->names('asignar');
