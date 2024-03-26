@@ -73,6 +73,8 @@ class ClienteController extends Controller
         $cliente->telefono = $request->input('telefono');
         $cliente->direccion = $request->input('direccion');
         $cliente->estado = $request->input('estado');
+        $cliente->fecha_Ingreso = $request->input('fecha_Ingreso');
+        $cliente->tipo_Contratacion = $request->input('tipo_Contratacion');
 
         $cliente->save();
 
@@ -120,6 +122,8 @@ class ClienteController extends Controller
         $cliente->telefono = $request->input('telefono');
         $cliente->direccion = $request->input('direccion');
         $cliente->estado = $request->input('estado');
+        $cliente->fecha_Ingreso = $request->input('fecha_Ingreso');
+        $cliente->tipo_Contratacion = $request->input('tipo_Contratacion');
 
         $cliente->save();
 

@@ -19,7 +19,7 @@ class RoleController extends Controller
         // if (! Gate::allows('Crear_Usuario')) {
         //     abort(403);
         // }
-
+ 
         $roles = Role::all();
 
         return view('sistema.user.roles', compact('roles'));

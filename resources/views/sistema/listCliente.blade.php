@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Lista de Clientes</h1>
+    <h1>Lista de Empleados</h1>
 @stop
 
-@section('content')
+@section('content') 
     <div class="card">
         {{-- @can('Crear_Usuario') --}}
             <div class="card-head">
@@ -17,9 +17,9 @@
             {{-- Setup data for datatables --}}
             @php
                 if ($rolUsuario === 'Administrador') {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 20], ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', 'Direccion', 'Fecha Ingreso', 'Tipo Contratacion',  ['label' => 'Acciones', 'no-export' => true, 'width' => 10]];
                 } else {
-                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 20]];
+                    $heads = ['ID', 'Nombre', 'Apellido', ['label' => 'Telefono', 'width' => 10], 'Curp', 'Email', 'Direccion', 'Fecha Ingreso', 'Tipo Contratacion'];
                 }
 
                 $btnEdit = '';
@@ -45,14 +45,17 @@
                         <td>{{ $cliente->nombre }}</td>
                         <td>{{ $cliente->apellido }}</td>
                         <td>{{ $cliente->telefono }}</td>
-                        @can('Editar_Usuario')
+                        <td>{{ $cliente->curp }}</td>
+                        <td>{{ $cliente->email }}</td>
+                        <td>{{ $cliente->direccion  }}</td>
+                        <td>{{ $cliente->fecha_Ingreso  }}</td>
+                        <td>{{ $cliente->tipo_Contratacion  }}</td>
+
                             <td>
                                 <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
                                     class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                                     <i class="fa fa-lg fa-fw fa-pen"></i>
                                 </a>
-                            @endcan
-                            @can('Eliminar_Usuario')
                                 <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
                                     style="display: inline">
                                     @csrf
@@ -60,7 +63,7 @@
                                     {!! $btnDelete !!}
                                 </form>
                             </td>
-                        @endcan
+                        
                     </tr>
                 @endforeach
             </x-adminlte-datatable>

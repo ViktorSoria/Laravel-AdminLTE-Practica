@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edicion de Permiso</h1>
+    <h1>Edicion de Permiso</h1> 
 @stop
 
 @section('content')

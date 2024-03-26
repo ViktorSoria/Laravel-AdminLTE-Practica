@@ -3,11 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edicion de Clientes</h1>
+    <h1>Edicion de Empleado</h1>
 @stop
 
 @section('content')
-    <p>Ingrese la informacion del Cliente</p>
+    <p>Ingrese la informacion del Empleado </p>
 
     <div class="card">
         {{-- @php
@@ -76,34 +76,43 @@
                     </x-slot>
                 </x-adminlte-input>
 
+                <x-adminlte-select name="tipo_Contratacion" label="TIPO CONTRATACIÓN" label-class="text-lightblue" igroup-size="1x">
+                    <x-slot name="prependSlot">
+                        <div class="input-group-text bg-gradient-lightblue">
+                            <i class="fa fa-list-alt text-lightblue"></i>
+                        </div>
+                    </x-slot>
+                    <option value="" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == '' ? 'selected' : '' }}>Seleccione su Tipo de Contratación</option>
+                    <option value="Eventual" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Eventual' ? 'selected' : '' }}>Eventual
+                    </option>
+                    <option value="Contrato" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Contrato' ? 'selected' : '' }}>Contrato
+                    </option>
+                    <option value="Permanente" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Permanente' ? 'selected' : '' }}>
+                        Permanente</option>
+                </x-adminlte-select>
+                
+                {{-- With prepend slot, lg size, and label --}}
+                <x-adminlte-input name="fecha_Ingreso" label="FECHA INGRESO" placeholder="01/12/24"
+                    label-class="text-lightblue" value="{{ $cliente->fecha_Ingreso }}">
+                    <x-slot name="prependSlot">
+                        <div class="input-group-text">
+                            <i class="fa fa-calendar-times text-lightblue"></i>
+                        </div>
+                    </x-slot>
+                </x-adminlte-input>
+
                 {{-- With prepend slot, sm size and label --}}
                 <x-adminlte-textarea name="direccion" label="DIRECCION" rows=5 label-class="text-lightblue" igroup-size="sm"
                     placeholder="Inserte su Direccion">
                     <x-slot name="prependSlot">
-                        <div class="input-group-text bg-dark">
+                        <div class="input-group-text">
                             <i class="fas fa-lg fa-file-alt text-lightblue"></i>
                         </div>
                     </x-slot>
                     {{ $cliente->direccion }}
                 </x-adminlte-textarea>
-
-                {{-- With prepend slot, lg size, and label --}}
-                <x-adminlte-select name="estado" label="ESTADO CIVIL" label-class="text-lightblue" igroup-size="lg">
-                    <x-slot name="prependSlot">
-                        <div class="input-group-text bg-gradient-lightblue">
-                            <i class="fa fa-spinner"></i>
-                        </div>
-                    </x-slot>
-                    <option value="" {{ old('estado', $cliente->estado) == '' ? 'selected' : '' }}>Seleccione su
-                        estado civil</option>
-                    <option value="Casado" {{ old('estado', $cliente->estado) == 'Casado' ? 'selected' : '' }}>Casado
-                    </option>
-                    <option value="Soltero" {{ old('estado', $cliente->estado) == 'Soltero' ? 'selected' : '' }}>Soltero
-                    </option>
-                    <option value="Union Libre" {{ old('estado', $cliente->estado) == 'Union Libre' ? 'selected' : '' }}>
-                        Union Libre</option>
-                </x-adminlte-select>
-
+                
+                
 
                 {{-- Themes + icons --}}
                 <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />

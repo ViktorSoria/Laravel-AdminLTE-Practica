@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
 
-class PermisosController extends Controller
+class PermisosController extends Controller 
 {
     /**
      * Display a listing of the resource.

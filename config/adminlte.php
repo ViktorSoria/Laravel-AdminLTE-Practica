@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'Practica AdminLTE',
+    'title' => 'SECOEM',
     'title_prefix' => '',
-    'title_postfix' => '| Practica  ',
+    'title_postfix' => ' SECOEM',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,9 +63,9 @@ return [
     |
     */
 
-    'logo' => '<b>Practica</b>AdminLTE',
-    'logo_img' => 'vendor\adminlte\dist\img\Mangekyou_Sharingan_Kakashi.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => 'S E C O E M',
+    'logo_img' => 'vendor\adminlte\dist\img\logo-veda.png',
+    'logo_img_class' => 'brand-image elevation-4',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/Mangekyou_Sharingan_Kakashi.png',
+            'path' => 'vendor/adminlte/dist/img/Logo_carga.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 100,
-            'height' => 100,
+            'width' => 440,
+            'height' => 140,
         ],
     ],
 
@@ -312,82 +312,76 @@ return [
             'can' => 'manage-blog',
         ],
 
-        [
-            'header' => 'ADMINISTRACION',
-            // 'can' => 'AdministradorConfiguracion',
+        ['header'    => ' '],
+        [ 
+            'text'    => 'USER MANAGEMENT',
+            'icon'    => 'fas fa-fw fa-file',
+            'submenu' => [
+
+                [
+                    //'can' => 'AdministradorConfiguracion',
+                ],
+
+                [
+                    'text' => 'Roles',
+                    'route' => 'roles.index',
+                    'icon' => 'fa fa-user-plus',
+                    //'can' => 'AdministradorConfiguracion',
+                ],
+                [
+                    'text' => 'Permisos',
+                    'route' => 'permisos.index',
+                    'icon' => 'fa fa-users',
+                    //'can' => 'AdministradorConfiguracion',
+
+                ],
+                [
+                    'text' => 'Usuarios',
+                    'route' => 'asignar.index',
+                    'icon' => 'fa fa-address-card',
+                    //'can' => 'AdministradorConfiguracion',
+
+                ],
+
+            ],
         ],
 
+        ['header'    => ' '],
         [
-            'text' => 'Roles',
-            'route' => 'roles.index',
-            'icon' => 'fa fa-user-plus',
-            // 'can' => 'AdministradorConfiguracion',
-        ],
-        [
-            'text' => 'Permisos',
-            'route' => 'permisos.index',
-            'icon' => 'fa fa-users',
-            // 'can' => 'AdministradorConfiguracion',
+            'text'    => 'ADMON. PERSONAL',
+            'icon'    => 'fas fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Empleados',
+                    'route' => 'cliente.index',
+                ],
 
-        ],
-        [
-            'text' => 'Usuarios',
-            'route' => 'asignar.index',
-            'icon' => 'fa fa-address-card',
-            // 'can' => 'AdministradorConfiguracion',
+                [
+                    'text' => 'Movimientos',
+                    'url'  => '#',
+                ],
 
-        ],
-        ['header' => 'CLIENTES'],
-        [
-            'text' => 'Lista de Clientes',
-            'route' => 'cliente.index',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Nuevo Cliente',
-            'route' => 'cliente.create',
-            'icon' => 'fas fa-fw fa-plus-circle',
-            // 'can' => 'Crear_Usuario'
+                [
+                    'text' => 'Contratos',
+                    'url'  => '#',
+                ],
+            ],
         ],
 
+        // ['header' => 'EMPLEADOS'],
         // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
+        //     'text' => 'Lista de Empleados',
+        //     'route' => 'cliente.index',
+        //     'icon' => 'fas fa-fw fa-user',
         // ],
+        // [
+        //     'text' => 'Nuevo Empleado',
+        //     // 'route' => 'cliente.create',
+        //     'icon' => 'fas fa-fw fa-plus-circle',
+        //     //'can' => 'Crear_Usuario'
+        // ],
+
+
         // ['header' => 'labels'],
         // [
         //     'text' => 'important',

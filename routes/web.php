@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware([
+Route::middleware([ 
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',

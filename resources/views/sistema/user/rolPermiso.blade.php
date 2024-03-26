@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Roles y Permisos</h1>
+    <h1>Roles y Permisos</h1> 
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
             @foreach ($permisos as $permiso)
             <div>
                 <label>
-                    {!! Form::checkbox('permisos[]', $permiso->id, $role->hasPermissionTo($permiso->id) ? : false, ['class'=>'mr-1']) !!}
+                    {!! Form::checkbox('permisos[]', $permiso->id, $role->hasPermissionTo($permiso->id) ? : false,['class'=>'mr-1'])!!}
                     {{$permiso->name}}
                 </label>
             </div>

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Administracion de Roles</h1>
+    <h1>Administracion de Roles</h1> 
 @stop
 
 @section('content')
@@ -60,9 +60,6 @@
                         </td>
                     </tr>
                 @endforeach
-
-
-
             </x-adminlte-datatable>
 
             {{-- Compressed with style options / fill data using the plugin config --}}
@@ -70,14 +67,14 @@
                 bordered compressed /> --}}
         </div>
     </div>
-    {{-- Themed --}}
+    {{-- Themed  NUEVO ROL--}}
     <x-adminlte-modal id="modalPurple" title="Nuevo Rol" theme="primary" icon="fas fa-bolt" size='lg'
         disable-animations>
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf
             {{-- With label, invalid feedback disabled and form group class --}}
             <div class="row">
-                <x-adminlte-input name="nombre" label="Nombre del Rol nuevo" placeholder="Aqui su nuevo Rol a crear.."
+                <x-adminlte-input name="nombre" label="Nombre del Rol Nuevo" placeholder="Aqui su nuevo Rol a crear.."
                     fgroup-class="col-md-6" disable-feedback required />
             </div>
             <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fa fa-cogs" />
