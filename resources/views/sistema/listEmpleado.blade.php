@@ -10,7 +10,7 @@
     <div class="card">
         {{-- @can('Crear_Usuario') --}}
             <div class="card-head">
-                <a href="{{ route('cliente.create') }}" class="btn btn-primary float-right mt-2 mr-2">Nuevo</a>
+                <a href="{{ route('empleado.create') }}" class="btn btn-primary float-right mt-2 mr-2">Nuevo</a>
             </div>
         {{-- @endcan --}}
         <div class="card-body">
@@ -39,26 +39,26 @@
 
             {{-- Minimal example / fill data using the component slot --}}
             <x-adminlte-datatable id="table1" :heads="$heads" :config="$config">
-                @foreach ($clientes as $cliente)
+                @foreach ($empleados as $empleado)
                     <tr>
-                        <td>{{ $cliente->id }}</td>
-                        <td>{{ $cliente->nombre }}</td>
-                        <td>{{ $cliente->apellido }}</td>
-                        <td>{{ $cliente->telefono }}</td>
-                        <td>{{ $cliente->curp }}</td>
-                        <td>{{ $cliente->email }}</td>
-                        <td>{{ $cliente->direccion }}</td>
-                        <td>{{ $cliente->alta }}</td>
-                        <td>{{ $cliente->contrato }}</td>
+                        <td>{{ $empleado->id }}</td>
+                        <td>{{ $empleado->nombre }}</td>
+                        <td>{{ $empleado->apellido }}</td>
+                        <td>{{ $empleado->telefono }}</td>
+                        <td>{{ $empleado->curp }}</td>
+                        <td>{{ $empleado->email }}</td>
+                        <td>{{ $empleado->direccion }}</td>
+                        <td>{{ $empleado->alta }}</td>
+                        <td>{{ $empleado->contrato }}</td>
 
 @can('Actualizar');
 <td>
 
-    <a href="{{ route('cliente.edit', $cliente) }}" type="submit"
+    <a href="{{ route('empleado.edit', $empleado) }}" type="submit"
     class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
     <i class="fa fa-lg fa-fw fa-pen"></i>
     </a>
-    <form action="{{ route('cliente.destroy', $cliente) }}" method="POST" class="formEliminar"
+    <form action="{{ route('empleado.destroy', $empleado) }}" method="POST" class="formEliminar"
     style="display: inline">
     @csrf
     @method('delete')

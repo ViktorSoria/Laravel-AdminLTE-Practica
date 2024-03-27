@@ -314,8 +314,8 @@ return [
 
         ['header'    => ' '],
         [
-            'text'    => 'USER MANAGEMENT',
-            'icon'    => 'fas fa-fw fa-file',
+            'text'    => 'GESTIÓN DE USUARIOS',
+            'icon'    => 'fas fa-user-cog',
             'submenu' => [
 
                 [
@@ -348,12 +348,12 @@ return [
 
         ['header'    => ' '],
         [
-            'text'    => 'ADMON. PERSONAL',
-            'icon'    => 'fas fa-fw fa-file',
+            'text'    => 'ADMIN. PERSONAL',
+            'icon'    => 'fas fa-user-shield',
             'submenu' => [
                 [
                     'text' => 'Empleados',
-                    'route' => 'cliente.index',
+                    'route' => 'empleado.index',
                 ],
 
                 [

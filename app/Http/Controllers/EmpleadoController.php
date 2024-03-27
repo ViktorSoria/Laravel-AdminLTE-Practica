@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Empleado;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 
-class ClienteController extends Controller
+class EmpleadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,9 +32,9 @@ class ClienteController extends Controller
         // }
         $usuario = Auth::user();
         $rolUsuario = $usuario->getRoleNames()->first();
-        $clientes = Client::all();
+        $empleados = Empleado::all();
 
-        return view('sistema.listCliente', compact('clientes', 'rolUsuario'));
+        return view('sistema.listEmpleado', compact('empleados', 'rolUsuario'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ClienteController extends Controller
         // if (! Gate::allows('Crear_Usuario')) {
         //     abort(403);
         // }
-        return view('sistema.addCliente');
+        return view('sistema.addEmpleado');
     }
 
     /**
@@ -64,19 +64,19 @@ class ClienteController extends Controller
             'telefono' => 'required|integer|digits:10',
         ]);
 
-        $cliente = new Client();
+        $empleado = new Empleado();
 
-        $cliente->curp = $request->input('curp');
-        $cliente->nombre = $request->input('nombre');
-        $cliente->apellido = $request->input('apellido');
-        $cliente->email = $request->input('email');
-        $cliente->telefono = $request->input('telefono');
-        $cliente->direccion = $request->input('direccion');
-        $cliente->estado = $request->input('estado');
-        $cliente->alta = $request->input('alta');
-        $cliente->contrato = $request->input('contrato');
+        $empleado->curp = $request->input('curp');
+        $empleado->nombre = $request->input('nombre');
+        $empleado->apellido = $request->input('apellido');
+        $empleado->email = $request->input('email');
+        $empleado->telefono = $request->input('telefono');
+        $empleado->direccion = $request->input('direccion');
+        $empleado->estado = $request->input('estado');
+        $empleado->alta = $request->input('alta');
+        $empleado->contrato = $request->input('contrato');
 
-        $cliente->save();
+        $empleado->save();
 
         return back()->with('message', "Informacion recibida 😉");
     }
@@ -102,9 +102,9 @@ class ClienteController extends Controller
         //     abort(403);
         // }
 
-        $cliente = Client::find($id);
+        $empleado = Empleado::find($id);
 
-        return view('sistema.editCliente', compact('cliente'));
+        return view('sistema.editEmpleado', compact('empleado'));
     }
 
     /**
@@ -113,21 +113,21 @@ class ClienteController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $cliente = Client::find($id);
+        $empleado = Empleado::find($id);
 
-        $cliente->curp = $request->input('curp');
-        $cliente->nombre = $request->input('nombre');
-        $cliente->apellido = $request->input('apellido');
-        $cliente->email = $request->input('email');
-        $cliente->telefono = $request->input('telefono');
-        $cliente->direccion = $request->input('direccion');
-        $cliente->estado = $request->input('estado');
-        $cliente->fecha_Ingreso = $request->input('fecha_Ingreso');
-        $cliente->tipo_Contratacion = $request->input('tipo_Contratacion');
+        $empleado->curp = $request->input('curp');
+        $empleado->nombre = $request->input('nombre');
+        $empleado->apellido = $request->input('apellido');
+        $empleado->email = $request->input('email');
+        $empleado->telefono = $request->input('telefono');
+        $empleado->direccion = $request->input('direccion');
+        $empleado->estado = $request->input('estado');
+        $empleado->fecha_Ingreso = $request->input('fecha_Ingreso');
+        $empleado->tipo_Contratacion = $request->input('tipo_Contratacion');
 
-        $cliente->save();
+        $empleado->save();
 
-        return redirect()->route('cliente.index')->with('message', 'Datos Actualizados 👌');
+        return redirect()->route('empleado.index')->with('message', 'Datos Actualizados 👌');
     }
 
     /**
@@ -139,8 +139,8 @@ class ClienteController extends Controller
         // if (! Gate::allows('Eliminar_Usuario')) {
         //     abort(403);
         // }
-        $cliente = Client::find($id);
-        $cliente->delete();
+        $empleado = Empleado::find($id);
+        $empleado->delete();
         return back();
     }
 }

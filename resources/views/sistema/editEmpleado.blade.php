@@ -23,12 +23,12 @@
             }
         @endphp --}}
         <div class="card-body">
-            <form action="{{ route('cliente.update', $cliente) }}" method="POST">
+            <form action="{{ route('empleado.update', $empleado) }}" method="POST">
                 @csrf
                 @method('PUT')
                 {{-- With prepend slot --}}
                 <x-adminlte-input type="text" name="curp" label="CURP" label-class="text-lightblue"
-                    value="{{ $cliente->curp }}">
+                    value="{{ $empleado->curp }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fas fa-user text-lightblue"></i>
@@ -38,7 +38,7 @@
 
                 {{-- With prepend slot --}}
                 <x-adminlte-input type="text" name="nombre" label="NOMBRE(S)" label-class="text-lightblue"
-                    value="{{ $cliente->nombre }}">
+                    value="{{ $empleado->nombre }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fas fa-user text-lightblue"></i>
@@ -48,7 +48,7 @@
 
                 {{-- With prepend slot --}}
                 <x-adminlte-input type="text" name="apellido" label="APELLIDOS" label-class="text-lightblue"
-                    value="{{ $cliente->apellido }}">
+                    value="{{ $empleado->apellido }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fas fa-user text-lightblue"></i>
@@ -58,7 +58,7 @@
 
                 {{-- With prepend slot --}}
                 <x-adminlte-input type="email" name="email" label="EMAIL" label-class="text-lightblue"
-                    value="{{ $cliente->email }}">
+                    value="{{ $empleado->email }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fa fa-envelope text-lightblue"></i>
@@ -68,7 +68,7 @@
 
                 {{-- With prepend slot --}}
                 <x-adminlte-input type="text" name="telefono" label="TELEFONO" label-class="text-lightblue"
-                    value="{{ $cliente->telefono }}">
+                    value="{{ $empleado->telefono }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fa fa-phone text-lightblue"></i>
@@ -82,18 +82,18 @@
                             <i class="fa fa-list-alt text-lightblue"></i>
                         </div>
                     </x-slot>
-                    <option value="" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == '' ? 'selected' : '' }}>Seleccione su Tipo de Contratación</option>
-                    <option value="Eventual" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Eventual' ? 'selected' : '' }}>Eventual
+                    <option value="" {{ old('tipo_Contratacion', $empleado->tipo_Contratacion) == '' ? 'selected' : '' }}>Seleccione su Tipo de Contratación</option>
+                    <option value="Eventual" {{ old('tipo_Contratacion', $empleado->tipo_Contratacion) == 'Eventual' ? 'selected' : '' }}>Eventual
                     </option>
-                    <option value="Contrato" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Contrato' ? 'selected' : '' }}>Contrato
+                    <option value="Contrato" {{ old('tipo_Contratacion', $empleado->tipo_Contratacion) == 'Contrato' ? 'selected' : '' }}>Contrato
                     </option>
-                    <option value="Permanente" {{ old('tipo_Contratacion', $cliente->tipo_Contratacion) == 'Permanente' ? 'selected' : '' }}>
+                    <option value="Permanente" {{ old('tipo_Contratacion', $empleado->tipo_Contratacion) == 'Permanente' ? 'selected' : '' }}>
                         Permanente</option>
                 </x-adminlte-select>
 
                 {{-- With prepend slot, lg size, and label --}}
                 <x-adminlte-input name="fecha_Ingreso" label="FECHA INGRESO" placeholder="01/12/24"
-                    label-class="text-lightblue" value="{{ $cliente->fecha_Ingreso }}">
+                    label-class="text-lightblue" value="{{ $empleado->fecha_Ingreso }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fa fa-calendar-times text-lightblue"></i>
@@ -103,7 +103,7 @@
 
                 {{-- With prepend slot, sm size and label --}}
                 <x-adminlte-input name="direccion" label="DIRECCION" label-class="text-lightblue"
-                    placeholder="Inserte su Direccion" value="{{ $cliente->direccion }}">
+                    placeholder="Inserte su Direccion" value="{{ $empleado->direccion }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
                             <i class="fas fa-lg fa-file-alt text-lightblue"></i>
@@ -115,7 +115,7 @@
 
                 {{-- Themes + icons --}}
                 <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />
-                <a href="{{ route('cliente.index') }}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
+                <a href="{{ route('empleado.index') }}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
 
             </form>
         </div>

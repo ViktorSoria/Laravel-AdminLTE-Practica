@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsuarioController;
@@ -32,7 +32,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('/client', ClienteController::class)->names('cliente');
+    Route::resource('/empleados', EmpleadoController::class)->names('empleado');
     Route::resource('/movimientos', MovimientosController::class)->names('movimientos');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisosController::class)->names('permisos');

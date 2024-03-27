@@ -23,7 +23,7 @@
             }
         @endphp
         <div class="card-body">
-            <form action="{{ route('cliente.store') }}" method="POST">
+            <form action="{{ route('empleado.store') }}" method="POST">
                 @csrf
 
                 {{-- With prepend slot --}}
@@ -67,7 +67,7 @@
                 </x-adminlte-input>
 
                 {{-- With prepend slot --}}
-                <x-adminlte-input type="text" name="telefono" label="TELEFONO" placeholder="+525512345678"
+                <x-adminlte-input type="text" name="telefono" label="TELEFONO" placeholder="5512345678"
                     label-class="text-lightblue" value="{{ old('telefono') }}">
                     <x-slot name="prependSlot">
                         <div class="input-group-text">
@@ -126,7 +126,7 @@
                 {{-- Themes + icons --}}
                 <x-adminlte-button type="submit" label="Guardar" theme="primary" icon="fas fa-save" />
                 {{-- <a href="/client" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a> --}}
-                <a href="{{route('cliente.index')}}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
+                <a href="{{route('empleado.index')}}" class="btn btn-primary float-right" icon="fas fa-save">Cancelar</a>
 
             </form>
         </div>
